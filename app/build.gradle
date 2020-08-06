@@ -1,11 +1,45 @@
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    bintrayRepo = 'maven' // Name of the Bintray repo you created
+    bintrayName = 'com.ab.utils:basic' // Bintray package name
+
+    publishedGroupId = 'com.ab.utils' // Group ID of the SDK which will be added in implementation line of gradle
+    artifact = 'basic' // Artifact ID of the SDK which will be added in implementation line of gradle
+    libraryVersion = '2019.08.0.0.1' // Version of the library you created in Bintray
+
+    libraryName = 'Android Utils' // It is generally the module name
+    libraryDescription = 'Utlity to use  in your app.' // Small description of the library
+
+    siteUrl = 'https://github.com/aadibugalia/AndroidUtils'
+    gitUrl = 'https://github.com/aadibugalia/AndroidUtils.git'
+
+    developerId = 'adityabugalia'
+    developerName = 'Aditya Bugalia'
+    developerEmail = 'aadibugalia@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+    //Bintray Credentials
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    bintrayUsername = properties.getProperty('BINTRAY_USERNAME')
+    bintrayUserOrg = properties.getProperty('BINTRAY_ORG')
+    bintrayApiKey = properties.getProperty('BINTRAY_API_KEY')
+}
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.ab.utils"
+      //  applicationId "com.ab.utils"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -31,3 +65,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 }
+
+apply from: 'bintray.script'
