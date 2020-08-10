@@ -4,7 +4,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 ext {
-    bintrayRepo = 'maven' // Name of the Bintray repo you created
+
+    bintrayRepo = 'com.ab.utils' // Name of the Bintray repo you created
     bintrayName = 'com.ab.utils:basic' // Bintray package name
 
     publishedGroupId = 'com.ab.utils' // Group ID of the SDK which will be added in implementation line of gradle
@@ -33,7 +34,9 @@ ext {
     bintrayUserOrg = properties.getProperty('BINTRAY_ORG')
     bintrayApiKey = properties.getProperty('BINTRAY_API_KEY')
 }
-
+//pkg {
+//    userOrg = 'elio-ab'
+//}
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
